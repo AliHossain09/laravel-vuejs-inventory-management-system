@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 
 
-Route::prefix('posts')->group(function () {
-    Route::get('/', [AuthController::class, 'index']); 
-    Route::post('/', [AuthController::class, 'store']);        
-    Route::get('/{id}', [AuthController::class, 'edit']);        
-    Route::get('/{id}', [AuthController::class, 'showSingle']);      
-    Route::post('/{id}', [AuthController::class, 'update']);   
-    Route::delete('/{id}', [AuthController::class, 'destroy']); 
-});
+// Route::prefix('user')->group(function () {
+//     Route::get('/', [AuthController::class, 'index']); 
+//     Route::post('/', [AuthController::class, 'store']);     
+//     Route::post('/', [AuthController::class, 'login']);    
+//     Route::get('/{id}', [AuthController::class, 'edit']);        
+//     Route::get('/{id}', [AuthController::class, 'showSingle']);      
+//     Route::post('/{id}', [AuthController::class, 'update']);   
+//     Route::delete('/{id}', [AuthController::class, 'destroy']); 
+// });
+
+Route::post('/users', [AuthController::class, 'store']);
+Route::post('/users', [AuthController::class, 'login']);

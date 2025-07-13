@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 //     Route::delete('/{id}', [AuthController::class, 'destroy']); 
 // });
 
-Route::post('/users', [AuthController::class, 'store']);
-Route::post('/users', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'store']); 
+Route::get('/logout', [AuthController::class, 'logout']);  

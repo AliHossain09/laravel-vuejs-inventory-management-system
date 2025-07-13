@@ -15,7 +15,7 @@ class AuthController extends Controller
 
 
 
-    public function store(Request $request)  // API: Store new post
+    public function store(Request $request)  
     {
         // Validate the request data
         $request->validate([
@@ -41,7 +41,7 @@ class AuthController extends Controller
                 File::makeDirectory($userImagePath, 0755, true);
             }
 
-            // Resize the image to 800x600 and save it
+            // Resize the image  and save it
             Image::load($request->image->path())
                 ->resize(400, 400)
                 ->save($userImagePath . '/' . $imageName);
@@ -71,31 +71,28 @@ class AuthController extends Controller
         ]);
     }
 
-   
-}
- public function login(Request $request)
+    public function login(Request $request)
     {
-        // Validate credentials
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'email'    => 'required|email',
             'password' => 'required',
         ]);
 
-        // Try to login
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             $user = Auth::user();
-
+            
             return response()->json([
-                'success' => true,
-                'message' => 'Login successful',
-                'user' => $user,
-                'redirect' => $user->role === 'admin' ? route('admin.dashboard') : route('client.dashboard')
+                'success'  => true,
+                'message'  => 'Login successful',
+                'user'     => $user, // এখানে image, firstName, lastName আছে
+                'redirect' => $user->role === 'Admin' 
+                    ? route('admin.dashboard') 
+                    : route('author.dashboard')
             ]);
         }
 
-        // Login failed
         return response()->json([
             'success' => false,
             'message' => 'Invalid credentials',
@@ -108,11 +105,15 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
 
         return response()->json([
             'success' => true,
             'message' => 'Logged out successfully'
         ]);
     }
+
+   
+}
+ 

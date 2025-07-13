@@ -147,7 +147,7 @@ export default {
         formData.append('image', this.form.image);
         }
 
-      axios.post('/api/users', formData, {
+      axios.post('/api/register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -188,7 +188,7 @@ export default {
 
     Swal.fire({
         icon: 'error',
-        title: '⚠️অনুগ্রহ করে সব ঘর পূরণ করুন!',
+        title: 'অনুগ্রহ করে সব ঘর পূরণ করুন!',
         // title: 'Form validation failed',
         // text: 'Please check the form fields',
          

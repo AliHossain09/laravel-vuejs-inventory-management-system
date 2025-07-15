@@ -79,12 +79,12 @@
 
                     <button  
                         type="submit" 
-                        class="w-full bg-rose-700 text-white py-4 px-6 rounded text-lg hover:bg-rose-800 transition-colors mt-6"
+                        class="w-full py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full"
                     >Registration → 
                     </button>
                 </form>
                 <p class="mt-4 text-sm"> Already have an account?
-                    <a href="/" class="text-blue-500 hover:underline">Login</a>
+                    <a href="/" class="text-blue-500 font-bold hover:underline">Login</a>
                 </p>
                 
             </div>

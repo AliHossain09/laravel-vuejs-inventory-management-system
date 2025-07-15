@@ -20,4 +20,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post('/register', [AuthController::class, 'store']); 
-Route::get('/logout', [AuthController::class, 'logout']);  
+Route::get('/logout', [AuthController::class, 'logout']);
+Route::post('/forgot-password', [AuthController::class, 'forgotPost']);
+Route::post('/reset-password', [AuthController::class, 'resetPasswordPost']);

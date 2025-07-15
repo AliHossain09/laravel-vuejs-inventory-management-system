@@ -276,7 +276,7 @@ export default {
           showConfirmButton: false,
         });
         setTimeout(() => {
-          localStorage.removeItem('user'); //ইউজার ডাটা মুছুন remove user data
+          localStorage.removeItem('user'); // remove user data
           window.location.href = '/';
         }, 1500);
       })

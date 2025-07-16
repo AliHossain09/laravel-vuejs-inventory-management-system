@@ -14,6 +14,7 @@ Route::get('/register', [ViewController::class, 'userLogin'])->name('user.regist
 
 Route::get('/forgot', [ViewController::class, 'forgot'])->name('password.forgot');
 // Route::post('/forgot', [ViewController::class, 'forgotPost'])->name('password.forgot.post');
+
 Route::get('/forgot/{token}', [ViewController::class, 'resetPassword'])->name('password.forgot.likn');
 // Route::post('/resetPassword/submit', [ViewController::class, 'resetPasswordPost'])->name('password.reset.post');
 

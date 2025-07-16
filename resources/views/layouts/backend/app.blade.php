@@ -32,14 +32,14 @@
     @endif
   </head>
   <body>
-    <div id="backend" class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div id="backend" class="flex h-screen bg-gray-100" :class="{ 'overflow-hidden': isSideMenuOpen }">
       
       @yield('sidebar')
 
         <div class="flex flex-col flex-1 w-full">
         
         
-        <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+        <header class="z-10 py-4  shadow-md bg-white border-b border-gray-200">
 
            @yield('topbar')
           

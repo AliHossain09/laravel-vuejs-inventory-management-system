@@ -16,7 +16,7 @@
 
   <body class="min-h-screen flex items-center justify-center  bg-[url(projectImages/background.png)] bg-contain ">
     <div id="app">
-      <reset-component></reset-component>
+      <reset-component ></reset-component>
       {{-- <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md mt-10 relative overflow-hidden">
     <h2 class="text-2xl font-bold text-gray-800 mb-4">Set new password</h2>
     <p class="text-gray-600 mb-6">Fill out the form with your email and new password.</p>

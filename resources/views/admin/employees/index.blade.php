@@ -2,12 +2,12 @@
 
 
 @section('topbar')
-<front-topbar-component></front-topbar-component>
+<back-topbar-component></back-topbar-component>
 @endsection
 
 
 @section('sidebar')
-<front-sidebar-component></front-sidebar-component>
+<back-sidebar-component></back-sidebar-component>
 @endsection
 
 

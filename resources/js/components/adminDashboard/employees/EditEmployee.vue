@@ -11,7 +11,7 @@
     </div>
 
     <!-- Form -->
-    <form form @submit.prevent="updateEmployee">
+    <form @submit.prevent="updateEmployee">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Full Name -->
         <div>
@@ -116,45 +116,108 @@ export default {
   //   });
   // },
   methods: {
-    
-    handleFileChange(e) {
-      this.form.image = e.target.files[0];
+  handleFileChange(e) {
+    this.form.image = e.target.files[0];
 
-      // Preview image
-       const oldFileReader= new FileReader();
-       oldFileReader.onload = (e) => {
-         this.oldImage = e.target.result;
-       };
-       oldFileReader.readAsDataURL(this.form.image);
+    const oldFileReader = new FileReader();
+    oldFileReader.onload = (e) => {
+      this.oldImage = e.target.result;
+    };
+    oldFileReader.readAsDataURL(this.form.image);
 
-       // Preview image
-       const reader = new FileReader();
-       reader.onload = (e) => {
-         this.previewImage = e.target.result;
-       };
-       reader.readAsDataURL(this.form.image);
-    },
-// fetch post data by id
-    fetchPost() {
-      axios.get(`/api/employees/${this.id}`)
-      .then(response => {
-      const employee = response.data.employee;
-      
-      this.form.name = employee.name;
-      this.form.email = employee.email;
-      this.form.address = employee.address;
-      this.form.salary = employee.salary;
-      this.form.joining_date = employee.joining_date;
-      this.form.nid = employee.nid;
-      
-          // ✅ পুরানো ইমেজ দেখানোর জন্য previewImage সেট করো
-      this.oldImage = '/employeeImages/' + employee.image;
-
-    }).catch(error => {
-          console.error(error);
-        });
-    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.previewImage = e.target.result;
+    };
+    reader.readAsDataURL(this.form.image);
   },
+
+  fetchPost() {
+    axios.get(`/api/employees/${this.id}`)
+      .then(response => {
+        const employee = response.data.employee;
+
+        this.form.name = employee.name;
+        this.form.email = employee.email;
+        this.form.address = employee.address;
+        this.form.salary = employee.salary;
+        this.form.joining_date = employee.joining_date;
+        this.form.nid = employee.nid;
+
+        this.oldImage = '/employeeImages/' + employee.image;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },
+
+  updateEmployee() {
+    const formData = new FormData();
+    formData.append('name', this.form.name);
+    formData.append('email', this.form.email);
+    formData.append('address', this.form.address);
+    formData.append('salary', this.form.salary);
+    formData.append('joining_date', this.form.joining_date);
+    formData.append('nid', this.form.nid);
+
+    if (this.form.image) {
+      formData.append('image', this.form.image);
+    }
+
+    axios
+      .post(`/api/employees/${this.id}?_method=PUT`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        if (response.data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'আপনার একাউন্ট সফলভাবে updated হয়েছে।',
+            text: 'কর্মচারী সফলভাবে updated হয়েছে!',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#CFF4FC',
+            color: '#055160',
+            iconColor: '#0d9488',
+            didOpen: (toast) => {
+              toast.querySelector('.swal2-timer-progress-bar').style.background = '#0d9488';
+            },
+          });
+
+          setTimeout(() => {
+            window.location.href = '/admin/employee/index';
+          }, 3000);
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 422) {
+          this.errors = error.response.data.errors;
+
+          Swal.fire({
+            icon: 'error',
+            title: 'অনুগ্রহ করে সব ঘর পূরণ করুন!',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            background: '#B6F500',
+            color: '#b00020',
+            iconColor: '#ff0000',
+            didOpen: (toast) => {
+              toast.querySelector('.swal2-timer-progress-bar').style.background = '#ff0000';
+            },
+          });
+        }
+      });
+  }
+},
+
    mounted() {
     this.fetchPost();
   }

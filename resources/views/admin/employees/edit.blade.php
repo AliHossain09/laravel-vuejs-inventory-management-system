@@ -7,6 +7,7 @@
 
 
 @section('sidebar')
+hello
 <back-sidebar-component></back-sidebar-component>
 @endsection
 

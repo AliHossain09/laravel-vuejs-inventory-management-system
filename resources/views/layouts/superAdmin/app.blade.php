@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Author Dashboard</title>
+    <title>Super Admin Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -28,11 +28,11 @@
     <script src="{{ asset('dashboard/js/init-alpine.js') }}" defer></script>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-      @vite(['resources/css/app.css', 'resources/js/backend.js'])
+      @vite(['resources/css/app.css', 'resources/js/superAdmin.js'])
     @endif
   </head>
   <body>
-    <div id="backend" class="flex h-screen bg-gray-100" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div id="superAdmin" class="flex h-screen bg-gray-100" :class="{ 'overflow-hidden': isSideMenuOpen }">
       
       @yield('sidebar')
 

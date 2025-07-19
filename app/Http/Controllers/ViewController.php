@@ -17,6 +17,11 @@ class ViewController extends Controller
         return view('auth.login');
     }
 
+    public function superAdminDashboard()
+    {
+        return view('superAdmin.dashboard'); 
+    }
+
     public function adminDashboard()
     {
         return view('admin.dashboard'); 
@@ -25,6 +30,8 @@ class ViewController extends Controller
     {
         return view('author.dashboard'); 
     }
+
+    
 
     public function forgot()
     {
@@ -89,10 +96,6 @@ class ViewController extends Controller
       
     
     }
-
-
-    
-
     public function userIndex()
     {
         return view(); 
@@ -106,6 +109,27 @@ class ViewController extends Controller
     public function userShow()
     {
         return view(); 
+    }
+    
+// Employee
+     public function create() {
+        return view('admin.employees.create');
+    }
+
+    public function index() {
+        return view('admin.employees.index');
+    }
+
+    public function edit($id) {
+        return view('admin.employees.edit', compact('id'));
+    }
+
+    public function show($id) {
+        return view('admin.employees.show', compact('id'));
+    }
+
+     public function createSupplier() {
+        return view('admin.suppliers.create');
     }
 
     

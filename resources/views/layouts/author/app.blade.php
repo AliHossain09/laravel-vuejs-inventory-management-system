@@ -28,11 +28,11 @@
     <script src="{{ asset('dashboard/js/init-alpine.js') }}" defer></script>
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-      @vite(['resources/css/app.css', 'resources/js/frontend.js'])
+      @vite(['resources/css/app.css', 'resources/js/author.js'])
     @endif
   </head>
   <body>
-    <div id="frontend" class="flex h-screen bg-gray-100" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div id="author" class="flex h-screen bg-gray-100" :class="{ 'overflow-hidden': isSideMenuOpen }">
       
       @yield('sidebar')
 

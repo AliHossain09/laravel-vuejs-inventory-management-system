@@ -1,17 +1,17 @@
-@extends('layouts.admin.app')
+@extends('layouts.superAdmin.app')
 
 
 @section('topbar')
-<back-topbar-component></back-topbar-component>
+<super-admin-topbar-component></super-admin-topbar-component>
 @endsection
 
 @section('sidebar')
-<back-sidebar-component></back-sidebar-component>
+<super-admin-sidebar-component></super-admin-sidebar-component>
 @endsection
 
 
 @section('content')
-  <!-- Main Content -->
+ <!-- Main Content -->
     <main class="p-6 space-y-6">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
   <div class="bg-white p-6 rounded-lg shadow-md">

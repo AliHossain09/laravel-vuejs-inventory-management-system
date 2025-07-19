@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('userName');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role');
+            $table->string('role')->default('author'); // 'admin' or 'author'
             $table->string('image')->nullable();
             $table->date('starting_date')->nullable();
             $table->rememberToken();

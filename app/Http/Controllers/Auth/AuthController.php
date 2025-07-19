@@ -1,20 +1,20 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Shop;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Image\Image;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+use Spatie\Image\Image;
 
 class AuthController extends Controller
 {
@@ -30,8 +30,8 @@ class AuthController extends Controller
             'userName' => 'nullable',
             'email' => 'required|email|unique:users',
             'password' => 'required',
-            'role' => 'required',
-            'image' => 'nullable |mimes:png,jpg,gift,gpeg,tiff,bmp,webP',
+            'role' => 'nullable|in:SuperAdmin,Admin,Author',
+            'image' => 'nullable|mimes:png,jpg,gif,jpeg,tiff,bmp,webp',
         ]);
 
         // Check if an image is uploaded
@@ -56,14 +56,14 @@ class AuthController extends Controller
             $imageName = 'default.png';
         }
 
-
+        
         $user = new User();
         $user->firstName = $request->firstName;
         $user->lastName = $request->lastName;
         $user->userName = $request->userName;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = $request->role;
+        $user->role = $request->role ?? 'Author';
         $user->image = $imageName;
         $user->starting_date = now();
         $user->save();
@@ -93,10 +93,18 @@ class AuthController extends Controller
                 'success'  => true,
                 'message'  => 'Login successful',
                 'user'     => $user, // এখানে image, firstName, lastName আছে
-                'redirect' => $user->role === 'Admin' 
-                    ? route('admin.dashboard') 
-                    : route('author.dashboard')
+                // 'redirect' => $user->role === 'Admin' 
+                //     ? route('admin.dashboard') 
+                //     : route('author.dashboard')
+                'redirect' => match ($user->role) {
+        'SuperAdmin' => route('superAdmin.dashboard'),
+        'Admin'      => route('admin.dashboard'),
+        'Author'     => route('author.dashboard'),
+        default      => route('user.login'), // fallback
+    }
             ]);
+
+            
         }
 
         return response()->json([

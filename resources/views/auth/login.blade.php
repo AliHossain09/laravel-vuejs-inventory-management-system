@@ -7,6 +7,7 @@
     <title>Inventory Login</title>
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="shortcut icon" href="projectImages/logo.png" type="image/x-icon">
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))

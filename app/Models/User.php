@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -18,7 +19,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = ['userName','email','password', 'role', 'image'];
+    protected $fillable = ['firstName', 'lastName', 'userName','email','password','role_id', 'role', 'image', 'starting_date'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,15 +43,20 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-            // If user is Admin
-        public function shopsCreated()
-        {
-            return $this->hasMany(Shop::class, 'admin_id');
-        }
 
-        // If user is Author
-        public function assignedShop()
-        {
-           return $this->hasOne(Shop::class, 'author_id');
-        }
+     public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function shops() // Admin create shops
+    {
+        return $this->hasMany(Shop::class, 'admin_id');
+    }
+
+    public function assignedShops() // Author assigned shop
+    {
+        return $this->belongsToMany(Shop::class, 'author_shop', 'author_id', 'shop_id');
+    }
+
 }

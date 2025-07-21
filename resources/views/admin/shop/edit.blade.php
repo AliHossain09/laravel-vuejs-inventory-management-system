@@ -7,10 +7,10 @@
 
 
 @section('sidebar')
+hello
 <back-sidebar-component></back-sidebar-component>
 @endsection
 
-
 @section('content')
-<create-supplier-component></create-supplier-component>
+<edit-supplier-component :id="{{ $id }}"></edit-supplier-component>
 @endsection

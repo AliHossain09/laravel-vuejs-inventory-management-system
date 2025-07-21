@@ -55,8 +55,6 @@
           
         </div>
         
-        
-        
         <!-- Image Upload -->
         <div>
           <!-- Old Image Preview -->
@@ -112,11 +110,7 @@ export default {
         oldImage: null,
     };
   },
-  // mounted() {
-  //   axios.get(`/api/employees/${this.id}`).then(res => {
-  //     this.form = res.data.employee;
-  //   });
-  // },
+  
   methods: {
   handleFileChange(e) {
     this.form.image = e.target.files[0];
@@ -145,8 +139,6 @@ export default {
         this.form.salary = employee.salary;
         this.form.joining_date = employee.joining_date;
         this.form.nid = employee.nid;
-        this.form.shop_id = employee.shop_id;
-        
 
         this.oldImage = '/employeeImages/' + employee.image;
       })

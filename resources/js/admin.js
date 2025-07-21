@@ -23,8 +23,22 @@ app.component('edit-employee-component', EditEmployee);
 import ShowEmployee from './components/adminDashboard/employees/ShowEmployee.vue';
 app.component('show-employee-component', ShowEmployee);
 
-import Suppliers from './components/adminDashboard/suppliers/CreateSuppliers.vue';
-app.component('show-suppliers-component', Suppliers);
+//Supplier
+import IndexSupplier from './components/adminDashboard/suppliers/IndexSuppliers.vue';
+app.component('index-supplier-component', IndexSupplier);
+
+import CreateSupplier from './components/adminDashboard/suppliers/CreateSupplier.vue';
+app.component('create-supplier-component', CreateSupplier);
+
+import EditSupplier from './components/adminDashboard/suppliers/EditSupplier.vue';
+app.component('edit-supplier-component', EditSupplier);
+
+import ShowSupplier from './components/adminDashboard/suppliers/ShowSupplier.vue';
+app.component('show-supplier-component', ShowSupplier);
+
+//shop
+import CreateShop from './components/adminDashboard/shop/CreateShop.vue';
+app.component('create-shop-component', CreateShop);
 
 
 

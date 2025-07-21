@@ -112,27 +112,56 @@ class ViewController extends Controller
     }
     
 // Employee
-     public function create() {
+     public function createEmployee() {
         return view('admin.employees.create');
     }
 
-    public function index() {
+    public function indexEmployee() {
         return view('admin.employees.index');
     }
 
-    public function edit($id) {
+    public function editEmployee($id) {
         return view('admin.employees.edit', compact('id'));
     }
 
-    public function show($id) {
+    public function showEmployee($id) {
         return view('admin.employees.show', compact('id'));
     }
 
+// Suppliers
      public function createSupplier() {
         return view('admin.suppliers.create');
     }
 
-    
+     public function indexSupplier() {
+        return view('admin.suppliers.index');
+    }
 
+    public function editSupplier($id) {
+        return view('admin.suppliers.edit', compact('id'));
+    }
+
+    public function showSupplier($id) {
+        return view('admin.suppliers.show', compact('id'));
+    }
+
+    //shop
+      public function indexShop()
+    {
+        return view('admin.shop.index');
+    }
+
+    public function createShop()
+    {
+        return view('admin.shop.create');
+    }
+
+    public function editShop($id)
+    {
+        return view('admin.shop.edit', compact('id'));
+    }
+    public function showShop($id) {
+        return view('admin.shop.show', compact('id'));
+    }
     
 }

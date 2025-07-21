@@ -3,15 +3,15 @@
     <div class="flex items-center justify-between mb-4 border-b-2 shadow-md p-2 rounded-md">
         
       <h2 class="text-xl font-semibold text-gray-700 flex items-center">
-        <i class="fas fa-user mr-2"></i> Employee Insert
+        <i class="fas fa-user mr-2"></i> Supplier Insert
       </h2>
-      <a href="/admin/employee/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-        All Employee
+      <a href="/admin/supplier/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+        All Supplier
       </a>
     </div>
 
     <!-- Form -->
-    <form form @submit.prevent="saveEmployee">
+    <form form @submit.prevent="saveSupplier">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Full Name -->
         <div>
@@ -34,43 +34,14 @@
           <span class="text-red-500 text-sm" v-if="errors.address">{{ errors.address[0] }}</span>
         </div>
 
-        <!-- Salary -->
+        <!-- phone -->
         <div>
-          <input v-model="form.salary" name="salary" type="number" placeholder="Salary"
+          <input v-model="form.phone" name="phone" type="number" placeholder="phone number"
             class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.salary">{{ errors.salary[0] }}</span>
+          <span class="text-red-500 text-sm" v-if="errors.phone">{{ errors.phone[0] }}</span>
         </div>
 
-        <!-- Joining Date -->
-        <div>
-          <input v-model="form.joining_date" name="joining_date" type="date"
-            class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.joining_date">{{ errors.joining_date[0] }}</span>
-        </div>
-
-        <!-- NID Number -->
-        <div>
-          <input v-model="form.nid" name="nid" type="text" placeholder="NID Number"
-            class="w-full border border-gray-300 p-2 rounded" />
-          
-        </div>
-        <!-- shop_id Number -->
-        <!-- <div>
-          <input v-model="form.shop_id" name="shop_id" type="text" placeholder="shop_id"
-            class="w-full border border-gray-300 p-2 rounded" />
-          </div> -->
-
-
-        <!-- //shop_id loop -->
-         <!-- <div>
-    <select v-model="form.shop_id" class="border p-2 mb-3 w-full">
-      <option value="">Select Shop</option>
-      <option v-for="shop in shops" :key="shop.id" :value="shop.id">
-        {{ shop.name }}
-      </option>
-    </select>
-    <span class="text-red-500" v-if="errors.shop_id">{{ errors.shop_id[0] }}</span>
-  </div> -->
+       
 
         <!-- Image Upload -->
         <div>
@@ -110,13 +81,11 @@ export default {
        name: '',
         email: '',
         address: '',
-        salary: '',
-        joining_date: '',
-        nid: '',
+        phone: '',
         image: null
       },
        errors: {}, // Validation error messages
-      shops: [],
+
        previewImage: null,
     };
   },
@@ -133,21 +102,20 @@ export default {
        reader.readAsDataURL(this.form.image);
     },
 
-    saveEmployee() {
+    saveSupplier() {
       const formData = new FormData();
       formData.append('name', this.form.name);
       formData.append('email', this.form.email);
       formData.append('address', this.form.address);
-      formData.append('salary', this.form.salary);
-      formData.append('joining_date', this.form.joining_date);
-      formData.append('nid', this.form.nid);
+      formData.append('phone', this.form.phone);
+      
      
       // formData.append('image', this.form.image);
       if (this.form.image) {
         formData.append('image', this.form.image);
         }
 
-      axios.post('/api/employees', formData, {
+      axios.post('/api/suppliers', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -157,7 +125,7 @@ export default {
     Swal.fire({
       icon: 'success',
       title: 'আপনার একাউন্ট সফলভাবে তৈরি হয়েছে।',
-      text: 'কর্মচারী সফলভাবে যুক্ত হয়েছে!',
+      text: 'supplier সফলভাবে যুক্ত হয়েছে!',
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
@@ -174,7 +142,7 @@ export default {
 
     // redirect after 3 secounds later
     setTimeout(() => {
-      window.location.href = '/admin/employee/index';
+      window.location.href = '/admin/supplier/index';
     }, 3000);
   }
 }).catch(error => {
@@ -200,14 +168,7 @@ export default {
         });
         }
         });
-    },
-    //  async fetchShops() {
-    //   const res = await axios.get('/api/shops');
-    //   this.shops = res.data;
-    // },
-  },
-  // mounted() {
-  //   this.fetchShops();
-  // },
+    }
+  }
 };
 </script>

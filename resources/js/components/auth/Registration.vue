@@ -1,5 +1,4 @@
 <template>
-    this is register
     <div class="container bg-[#ffffffd7]  shadow-lg rounded-xl p-10 md:flex w-full max-w-4xl relative overflow-hidden">
         
         <!-- Abstract Blobs background) Design Element-->

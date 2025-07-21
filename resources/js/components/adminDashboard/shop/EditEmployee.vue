@@ -55,7 +55,12 @@
           
         </div>
         
-        
+        <!-- shop_id Number -->
+        <div>
+          <input v-model="form.shop_id" name="shop_id" type="text" placeholder="shop_id"
+            class="w-full border border-gray-300 p-2 rounded" />
+          
+        </div>
         
         <!-- Image Upload -->
         <div>
@@ -104,6 +109,7 @@ export default {
         salary: '',
         joining_date: '',
         nid: '',
+        shop_id:'',
         image: null
       },
        errors: {}, // Validation error messages

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\EmployeeApiController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\ShopApiController;
 use App\Http\Controllers\Admin\SupplierApiController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -41,8 +43,17 @@ Route::put('/employees/{id}', [EmployeeApiController::class, 'update']);
 Route::get('/employees/show/{id}', [EmployeeApiController::class, 'show']);
 Route::delete('/employees/{id}', [EmployeeApiController::class, 'destroy']);
 
+// routes/api.php for Suppliers
 Route::get('/suppliers', [SupplierApiController::class, 'index']);
 Route::post('/suppliers', [SupplierApiController::class, 'store']);
+Route::get('/suppliers/{id}', [SupplierApiController::class, 'edit']);
+Route::put('/suppliers/{id}', [SupplierApiController::class, 'update']);
+Route::get('/suppliers/show/{id}', [SupplierApiController::class, 'show']);
+Route::delete('/suppliers/{id}', [SupplierApiController::class, 'destroy']);
 
-// Route::post('/employees', [EmployeeController::class, 'store']);
-// Route::get('/employees', [EmployeeController::class, 'index']);
+// routes/api.php
+Route::get('/shops', [ShopApiController::class, 'index']);
+Route::post('/shops', [ShopApiController::class, 'store']);
+Route::get('/shops/{id}', [ShopApiController::class, 'show']);
+Route::put('/shops/{id}', [ShopApiController::class, 'update']);
+Route::delete('/shops/{id}', [ShopApiController::class, 'destroy']);

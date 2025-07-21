@@ -38,15 +38,22 @@ Route::prefix('admin')->name('admin.')->middleware([AdminMiddleware::class])->gr
         
     Route::get('/dashboard', [ViewController::class, 'adminDashboard'])->name('dashboard');
     // routes/web.php for Employee
-    Route::get('/employee/create', [ViewController::class, 'create'])->name('employee.create');
-    Route::get('/employee/index', [ViewController::class, 'index'])->name('employee.index');
-    Route::get('/employee/edit/{id}', [ViewController::class, 'edit'])->name('employee.edit');
-    Route::get('/employee/show/{id}', [ViewController::class, 'show'])->name('employee.show');
+    Route::get('/employee/create', [ViewController::class, 'createEmployee'])->name('employee.create');
+    Route::get('/employee/index', [ViewController::class, 'indexEmployee'])->name('employee.index');
+    Route::get('/employee/edit/{id}', [ViewController::class, 'editEmployee'])->name('employee.edit');
+    Route::get('/employee/show/{id}', [ViewController::class, 'showEmployee'])->name('employee.show');
 
     // routes/web.php for Supplier             
-Route::get('/supplier/create', [ViewController::class, 'createSupplier']);
-Route::get('/supplier/index', [ViewController::class, 'indexSupplier']);
+    Route::get('/supplier/create', [ViewController::class, 'createSupplier'])->name('supplier.create');
+    Route::get('/supplier/index', [ViewController::class, 'indexSupplier'])->name('supplier.index');
+    Route::get('/supplier/show/{id}', [ViewController::class, 'showSupplier'])->name('supplier.show');
+    Route::get('/supplier/edit/{id}', [ViewController::class, 'editSupplier'])->name('supplier.edit');
 
+    // routes/web.php
+    Route::get('/shops/index', [ViewController::class, 'indexShop'])->name('shop.index');
+    Route::get('/shops/create', [ViewController::class, 'createShop'])->name('shop.create');
+    Route::get('/shops/{id}/edit', [ViewController::class, 'editShop'])->name('shop.edit');
+    Route::get('/shop/show/{id}', [ViewController::class, 'showShop'])->name('shop.show');
         
 });
 

@@ -12,5 +12,5 @@
 
 
 @section('content')
-<create-supplier-component></create-supplier-component>
+<show-supplier-component :id="{{ $id }}"></show-supplier-component>
 @endsection

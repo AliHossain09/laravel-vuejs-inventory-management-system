@@ -92,15 +92,12 @@ class AuthController extends Controller
             return response()->json([
                 'success'  => true,
                 'message'  => 'Login successful',
-                'user'     => $user, // এখানে image, firstName, lastName আছে
-                // 'redirect' => $user->role === 'Admin' 
-                //     ? route('admin.dashboard') 
-                //     : route('author.dashboard')
+                'user'     => $user, 
                 'redirect' => match ($user->role) {
         'SuperAdmin' => route('superAdmin.dashboard'),
         'Admin'      => route('admin.dashboard'),
         'Author'     => route('author.dashboard'),
-        default      => route('user.login'), // fallback
+        default      => route('user.login'),    // if fail then back
     }
             ]);
 
@@ -130,10 +127,6 @@ class AuthController extends Controller
             ]
         );
 
-        // Mail::send("email.forgot", ["token" => $token], function($message) use($request){
-        //     $message->to($request->email);
-        //     $message->subject("Forgot Password");
-        // });
         Mail::send("email.forgot", [
     "token" => $token,
     "email" => $request->email
@@ -149,81 +142,6 @@ class AuthController extends Controller
         ]);
     }
 
-// public function forgotPost(Request $request)
-// {
-//     // Validate the request and return JSON error if failed
-//     $validator = Validator::make($request->all(), [
-//         'email' => 'required|email|exists:users,email',
-//     ]);
-
-//     if ($validator->fails()) {
-//         return response()->json([
-//             'success' => false,
-//             'message' => 'Validation error',
-//             'errors' => $validator->errors(),
-//         ], 422);
-//     }
-
-//     // Generate token
-//     $token = Str::random(65);
-
-//     // Insert or update token in password_forgot table
-//     DB::table("password_forgot")->updateOrInsert(
-//         ['email' => $request->email],
-//         [
-//             "token" => $token,
-//             "created_at" => now(),
-//             "updated_at" => now(),
-//         ]
-//     );
-
-//     // Send reset email
-//     try {
-//         Mail::send("email.forgot", ["token" => $token], function($message) use($request){
-//             $message->to($request->email);
-//             $message->subject("Forgot Password");
-//         });
-//     } catch (\Exception $e) {
-//         return response()->json([
-//             'success' => false,
-//             // 'message' => 'Email could not be sent. Try again later.',
-//             'message' => 'এই ইমেইলটি আমাদের রেকর্ডে নেই।',
-//             'error' => $e->getMessage()
-//         ], 500);
-//     }
-
-//     // Success response
-//     return response()->json([
-//         'success' => true,
-//         // 'message' => 'Password reset link has been sent to your email.',
-//         'message' => 'রিসেট লিংক আপনার ইমেইলে পাঠানো হয়েছে।'
-//     ]);
-// }
-
-// public function reset(Request $request)
-// {
-//     $request->validate([
-//         'token' => 'required',
-//         'email' => 'required|email',
-//         'password' => 'required|min:8|confirmed',
-//     ]);
-
-//     $status = Password::reset(
-//         $request->only('email', 'password', 'password_confirmation', 'token'),
-//         function ($user, $password) {
-//             $user->forceFill([
-//                 'password' => Hash::make($password),
-//                 'remember_token' => Str::random(60),
-//             ])->save();
-
-//             event(new PasswordReset($user));
-//         }
-//     );
-
-//     return $status === Password::PASSWORD_RESET
-//         ? response()->json(['message' => 'পাসওয়ার্ড রিসেট সফল হয়েছে!'])
-//         : response()->json(['message' => 'রিসেট করা যায়নি।'], 422);
-// }
 
 public function resetPasswordPost(Request $request)
 {

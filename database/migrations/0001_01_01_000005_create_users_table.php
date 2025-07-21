@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('userName');
             $table->string('email')->unique();
             $table->string('password');
+            // $table->foreignId('role_id')->default(1)->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('role')->default('author'); // 'admin' or 'author'
             $table->string('image')->nullable();
             $table->date('starting_date')->nullable();

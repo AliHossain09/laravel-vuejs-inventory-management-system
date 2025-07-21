@@ -356,6 +356,43 @@
   </transition>
 </li>
 
+<!-- Shops Dropdown -->
+<li class="relative px-6 py-3">
+  <button
+    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+    @click="toggleShopsMenu"
+  >
+    <span class="inline-flex items-center">
+      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <span>Shops</span>
+    </span>
+    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fill-rule="evenodd"
+        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </button>
+
+  <transition name="fade">
+    <ul
+      v-if="isShopsMenuOpen"
+      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+      aria-label="submenu"
+    >
+      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+        <a href="/admin/shops/create" class="block w-full">Add Shops</a>
+      </li>
+      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+        <a href="/admin/shops/index" class="block w-full">All Shops</a>
+      </li>
+    </ul>
+  </transition>
+</li>
+
             <!-- ............................... -->
             
             <li>
@@ -459,6 +496,9 @@
                 <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
                   <a href="pages/blank.html" class="w-full block">Blank</a>
                 </li>
+                <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                  <a href="pages/blank.html" class="w-full block">Category</a>
+                </li>
               </ul>
             </transition>
           </li>
@@ -491,6 +531,7 @@ export default {
       isExpenseMenuOpen: false,    // 👈 new
       isStockMenuOpen: false,    // 👈 new
       isReportsMenuOpen: false,    // 👈 new
+      isShopsMenuOpen: false,    // 👈 new
 
     };
   },
@@ -529,6 +570,9 @@ export default {
     },
      toggleReportsMenu() {
       this.isReportsMenuOpen = !this.isReportsMenuOpen;
+    },
+    toggleShopsMenu() {
+      this.isShopsMenuOpen = !this.isShopsMenuOpen;
     }
     
   }

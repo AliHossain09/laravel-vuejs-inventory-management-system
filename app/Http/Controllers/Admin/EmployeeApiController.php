@@ -31,10 +31,10 @@ class EmployeeApiController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:employees',
             'address' => 'required',
-            'salary' => 'required',
-            'joining_date' => 'required',
+            'salary' => 'required|numeric',
+            'joining_date' => 'required|date',
             'nid' => 'nullable',
-            'image' => 'nullable|mimes:png,jpg,gif,jpeg,tiff,bmp,webp',
+            'image' => 'nullable|mimes:png,jpg,gif,jpeg,tiff,bmp,webp|max:2048',
         ]);
         
        

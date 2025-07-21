@@ -17,8 +17,8 @@
                   <input type="text" id="default-search" class="block w-80 h-11 pr-5 pl-12 py-2.5 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none" placeholder="Search for company">
               </div>
 
-      <a href="/admin/employee/create" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-        Add Employee
+      <a href="/admin/employee/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+        All Employee
       </a>
     </div>
             

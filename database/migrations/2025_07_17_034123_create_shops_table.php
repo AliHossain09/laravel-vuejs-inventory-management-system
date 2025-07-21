@@ -13,22 +13,10 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-             // Created by Admin
-            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
-
-             // Assigned to Author
-            // $table->foreignId('author_id')->unique()->constrained('users')->onDelete('set null')->nullable();
-            $table->unsignedBigInteger('author_id')->nullable();
-
-$table->foreign('author_id')
-      ->references('id')
-      ->on('users')
-      ->onDelete('set null');
-
-
             $table->string('name');
-            $table->string('location')->nullable();
+            $table->text('address')->nullable();
             $table->string('phone')->nullable();
+            $table->foreignId('admin_id')->nullable()->constrained('users')->onDelete('cascade'); // Created by admin
             $table->timestamps();
         });
     }

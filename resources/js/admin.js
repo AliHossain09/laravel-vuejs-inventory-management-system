@@ -40,6 +40,19 @@ app.component('show-supplier-component', ShowSupplier);
 import CreateShop from './components/adminDashboard/shop/CreateShop.vue';
 app.component('create-shop-component', CreateShop);
 
+//Product
+import IndexProduct from './components/adminDashboard/product/IndexProducts.vue';
+app.component('index-product-component', IndexProduct);
+
+import CreateProduct from './components/adminDashboard/product/CreateProduct.vue';
+app.component('create-product-component', CreateProduct);
+
+import EditProduct from './components/adminDashboard/product/EditProduct.vue';
+app.component('edit-product-component', EditProduct);
+
+import ShowProduct from './components/adminDashboard/product/Show.vue';
+app.component('show-product-component', ShowProduct);
+
 
 
 app.mount('#admin');

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EmployeeApiController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\ProductApiController;
 use App\Http\Controllers\Admin\ShopApiController;
 use App\Http\Controllers\Admin\SupplierApiController;
 use App\Http\Controllers\Auth\AuthController;
@@ -50,6 +51,16 @@ Route::get('/suppliers/{id}', [SupplierApiController::class, 'edit']);
 Route::put('/suppliers/{id}', [SupplierApiController::class, 'update']);
 Route::get('/suppliers/show/{id}', [SupplierApiController::class, 'show']);
 Route::delete('/suppliers/{id}', [SupplierApiController::class, 'destroy']);
+
+// routes/api.php for Products
+Route::get('/products', [ProductApiController::class, 'index']);
+Route::post('/products', [ProductApiController::class, 'store']);
+Route::get('/products/{id}', [ProductApiController::class, 'edit']);
+Route::put('/products/{id}', [ProductApiController::class, 'update']);
+Route::get('/products/show/{id}', [ProductApiController::class, 'show']);
+Route::delete('/products/{id}', [ProductApiController::class, 'destroy']);
+Route::get('/dropdowns/product-form', [ProductApiController::class, 'getDropdowns']);
+
 
 // routes/api.php
 Route::get('/shops', [ShopApiController::class, 'index']);

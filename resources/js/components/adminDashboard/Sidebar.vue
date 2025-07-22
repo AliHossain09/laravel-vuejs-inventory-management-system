@@ -2,7 +2,7 @@
  <!-- Sidebar -->
       <div class="flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-bg-blue-800 h-full text-white transition-all duration-300 border-none z-10 sidebar">
 
-        <div class="hidden md:flex items-center justify-center h-19 px-4 bg-blue-950">
+        <div class="hidden md:flex items-center justify-center h-21 px-4 bg-blue-950">
               <span class="text-xl font-semibold text-white">Admin Dashboard</span>
         </div>
 
@@ -53,7 +53,7 @@
         <a href="/admin/employee/create" class="block w-full">Add Employee</a>
       </li>
       <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/employee/index" class="block w-full">All Employee</a>
+        <a href="/admin/employee/index" class="block w-full">All Employees</a>
       </li>
     </ul>
   </transition>
@@ -91,7 +91,7 @@
         <a href="/admin/supplier/create" class="block w-full">Add Supplier</a>
       </li>
       <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/supplier/index" class="block w-full">All Supplier</a>
+        <a href="/admin/supplier/index" class="block w-full">All Suppliers</a>
       </li>
     </ul>
   </transition>
@@ -128,7 +128,7 @@
         <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Customer</a>
       </li>
       <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Customer</a>
+        <a href="admin/supplier/index" class="block w-full">All Customers</a>
       </li>
     </ul>
   </transition>
@@ -162,10 +162,10 @@
       aria-label="submenu"
     >
       <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Products</a>
+        <a href="/admin/product/create" class="block w-full">Add Product</a>
       </li>
       <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Products</a>
+        <a href="/admin/product/index" class="block w-full">All Products</a>
       </li>
     </ul>
   </transition>

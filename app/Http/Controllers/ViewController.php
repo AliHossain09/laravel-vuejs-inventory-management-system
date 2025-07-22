@@ -163,5 +163,22 @@ class ViewController extends Controller
     public function showShop($id) {
         return view('admin.shop.show', compact('id'));
     }
+
+    // Product
+     public function createProduct() {
+        return view('admin.product.create');
+    }
+
+     public function indexProduct() {
+        return view('admin.product.index');
+    }
+
+    public function editProduct($id) {
+        return view('admin.product.edit', compact('id'));
+    }
+
+    public function showProduct($id) {
+        return view('admin.product.show', compact('id'));
+    }
     
 }

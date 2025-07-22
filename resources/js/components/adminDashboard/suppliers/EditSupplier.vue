@@ -3,15 +3,15 @@
     <div class="flex items-center justify-between mb-4 border-b-2 shadow-md p-2 rounded-md">
         
       <h2 class="text-xl font-semibold text-gray-700 flex items-center">
-        <i class="fas fa-user mr-2"></i> Employee Edit
+        <i class="fas fa-user mr-2"></i> Supplier Edit
       </h2>
-      <a href="/admin/employee/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-        All Employee
+      <a href="/admin/supplier/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+        All Supplier
       </a>
     </div>
 
     <!-- Form -->
-    <form @submit.prevent="updateEmployee">
+    <form @submit.prevent="updateSupplier">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Full Name -->
         <div>
@@ -34,26 +34,13 @@
           <span class="text-red-500 text-sm" v-if="errors.address">{{ errors.address[0] }}</span>
         </div>
 
-        <!-- Salary -->
+        <!-- phone -->
         <div>
-          <input v-model="form.salary" name="salary" type="number" placeholder="Salary"
+          <input v-model="form.phone" name="phone" type="number" placeholder="phone number"
             class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.salary">{{ errors.salary[0] }}</span>
+          <span class="text-red-500 text-sm" v-if="errors.phone">{{ errors.phone[0] }}</span>
         </div>
 
-        <!-- Joining Date -->
-        <div>
-          <input v-model="form.joining_date" name="joining_date" type="date"
-            class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.joining_date">{{ errors.joining_date[0] }}</span>
-        </div>
-
-        <!-- NID Number -->
-        <div>
-          <input v-model="form.nid" name="nid" type="text" placeholder="NID Number"
-            class="w-full border border-gray-300 p-2 rounded" />
-          
-        </div>
         
         <!-- Image Upload -->
         <div>
@@ -99,9 +86,7 @@ export default {
        name: '',
         email: '',
         address: '',
-        salary: '',
-        joining_date: '',
-        nid: '',
+        phone: '',
         image: null
       },
        errors: {}, // Validation error messages
@@ -129,25 +114,23 @@ export default {
   },
 
   fetchPost() {
-    axios.get(`/api/employees/${this.id}`)
+    axios.get(`/api/suppliers/${this.id}`)
       .then(response => {
-        const employee = response.data.employee;
+        const supplier = response.data.supplier;
 
-        this.form.name = employee.name;
-        this.form.email = employee.email;
-        this.form.address = employee.address;
-        this.form.salary = employee.salary;
-        this.form.joining_date = employee.joining_date;
-        this.form.nid = employee.nid;
+        this.form.name = supplier.name;
+        this.form.email = supplier.email;
+        this.form.address = supplier.address;
+        this.form.phone = supplier.phone;
 
-        this.oldImage = '/employeeImages/' + employee.image;
+        this.oldImage = '/supplierImages/' + supplier.image;
       })
       .catch(error => {
         console.error(error);
       });
   },
 
-  updateEmployee() {
+  updateSupplier() {
     const formData = new FormData();
     formData.append('name', this.form.name);
     formData.append('email', this.form.email);
@@ -161,7 +144,7 @@ export default {
     }
 
     axios
-      .post(`/api/employees/${this.id}?_method=PUT`, formData, {
+      .post(`/api/suppliers/${this.id}?_method=PUT`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -186,7 +169,7 @@ export default {
           });
 
           setTimeout(() => {
-            window.location.href = '/admin/employee/index';
+            window.location.href = '/admin/supplier/index';
           }, 3000);
         }
       })

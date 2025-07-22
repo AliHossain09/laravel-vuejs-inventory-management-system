@@ -33,13 +33,7 @@
           </li>
           </div>
           <div class="md:flex md:justify-around">
-            <li class="flex items-center text-black text-sm">
-            <svg class="w-4 h-4 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            <strong class="md:pr-2">Joining Date:</strong>
-            {{ suppliers.shop_id }}
-          </li>
+            
           
           </div>
         </ul>
@@ -65,8 +59,8 @@ export default {
   },
   methods: {
     getpost(){
-      axios.get(`/api/employees/show/${this.id}`).then(res => {
-      this.employee = res.data.employee;
+      axios.get(`/api/suppliers/show/${this.id}`).then(res => {
+      this.supplier = res.data.supplier;
     });
     }
     

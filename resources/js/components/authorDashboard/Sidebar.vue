@@ -2,7 +2,7 @@
  <!-- Sidebar -->
       <div class="flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-bg-blue-800 h-full text-white transition-all duration-300 border-none z-10 sidebar">
 
-        <div class="hidden md:flex items-center justify-center h-17 px-4 bg-blue-950">
+        <div class="hidden md:flex items-center justify-center h-21 px-4 bg-blue-950">
               <span class="text-xl font-semibold text-white">Author Dashboard</span>
         </div>
 

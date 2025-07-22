@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('products_name');
-            $table->string('products_code');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
-            $table->string('unit')->nullable(); //  pcs, kg, liter
+            $table->string('products_code')->nullable();
+            $table->string('products_name');
             $table->decimal('buying_price', 10, 2)->nullable();
             $table->decimal('selling_price', 10, 2);
-            $table->integer('stock_quantity')->default(0); // current stock
+            $table->foreignId('supplier_id')->nullable()->constrained()->onDelete('cascade');
             $table->text('buying_date')->nullable();
+            $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->string('unit')->nullable(); //  pcs, kg, liter
+            $table->integer('stock_quantity')->default(0); // current stock
             $table->string('image')->nullable();
             $table->timestamps();
         });

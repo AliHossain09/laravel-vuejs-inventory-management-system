@@ -62,6 +62,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default {
+  props: ['id'],
   data() {
     return {
       form: {
@@ -69,71 +70,89 @@ export default {
         address: '',
         phone: '',
         admin_id: '',
-        
       },
-       errors: {}, // Validation error messages
-
+       errors: {}, // Validation error message
     };
   },
+  
   methods: {
-    saveShop() {
-      axios.post('/api/shops', {
+  fetchShop() {
+    axios.get(`/api/shops/${this.id}`)
+      .then(response => {
+        const employee = response.data.employee;
+
+        this.form.name = employee.name;
+        this.form.email = employee.email;
+        this.form.address = employee.address;
+        this.form.salary = employee.salary;
+        this.form.joining_date = employee.joining_date;
+        this.form.nid = employee.nid;
+        this.form.shop_id = employee.shop_id;
         
-         name: this.form.name,
-        address: this.form.address,
-        phone: this.form.phone,
-        admin_id: this.form.admin_id
 
-      }).then(response => {
-  const data = response.data;
-  if (data.success) {
-    Swal.fire({
-      icon: 'success',
-      title: 'আপনার shops সফলভাবে তৈরি হয়েছে।',
-      text: 'shops সফলভাবে যুক্ত হয়েছে!',
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      background: '#CFF4FC',
-      color: '#055160',
-      iconColor: '#0d9488',
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },
 
-      didOpen: (toast) => {
-        toast.querySelector('.swal2-timer-progress-bar').style.background = '#0d9488';
-      },
-    });
+  updateShop() {
+    
 
-    // redirect after 3 secounds later
-    setTimeout(() => {
-      window.location.href = '/admin/shop/index';
-    }, 3000);
-  }
-}).catch(error => {
-        if (error.response.status === 422) {
-        this.errors = error.response.data.errors;
+    axios
+      .post(`/api/shops/${this.id}?_method=PUT`, {
+        
+      })
+      .then((response) => {
+        if (response.data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'আপনার একাউন্ট সফলভাবে updated হয়েছে।',
+            text: 'কর্মচারী সফলভাবে updated হয়েছে!',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#CFF4FC',
+            color: '#055160',
+            iconColor: '#0d9488',
+            didOpen: (toast) => {
+              toast.querySelector('.swal2-timer-progress-bar').style.background = '#0d9488';
+            },
+          });
 
-    Swal.fire({
-        icon: 'error',
-        title: 'অনুগ্রহ করে সব ঘর পূরণ করুন!',
-        // title: 'Form validation failed',
-        // text: 'Please check the form fields',
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        background: '#B6F500', 
-        color: '#b00020', 
-        iconColor: '#ff0000',
-        didOpen: (toast) => {
-        toast.querySelector('.swal2-timer-progress-bar').style.background = '#ff0000'; 
-        },
-        });
+          setTimeout(() => {
+            window.location.href = '/admin/shops/index';
+          }, 3000);
         }
-        });
-    }
+      })
+      .catch((error) => {
+        if (error.response.status === 422) {
+          this.errors = error.response.data.errors;
+
+          Swal.fire({
+            icon: 'error',
+            title: 'অনুগ্রহ করে সব ঘর পূরণ করুন!',
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            background: '#B6F500',
+            color: '#b00020',
+            iconColor: '#ff0000',
+            didOpen: (toast) => {
+              toast.querySelector('.swal2-timer-progress-bar').style.background = '#ff0000';
+            },
+          });
+        }
+      });
+  }
+},
+
+   mounted() {
+    this.fetchShop();
   }
 };
 </script>

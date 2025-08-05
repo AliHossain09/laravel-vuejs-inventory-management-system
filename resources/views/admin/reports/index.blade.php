@@ -10,6 +10,7 @@
 <back-sidebar-component></back-sidebar-component>
 @endsection
 
+
 @section('content')
-<edit-shop-component :id="{{ $id }}"></edit-shop-component>
+<index-report-component></index-report-component>
 @endsection

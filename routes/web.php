@@ -53,13 +53,18 @@ Route::prefix('admin')->name('admin.')->middleware([AdminMiddleware::class])->gr
     Route::get('/shops/index', [ViewController::class, 'indexShop'])->name('shop.index');
     Route::get('/shops/create', [ViewController::class, 'createShop'])->name('shop.create');
     Route::get('/shops/{id}/edit', [ViewController::class, 'editShop'])->name('shop.edit');
-    Route::get('/shop/show/{id}', [ViewController::class, 'showShop'])->name('shop.show');
+    Route::get('/shops/show/{id}', [ViewController::class, 'showShop'])->name('shop.show');
 
     // routes/web.php for Product             
     Route::get('/product/create', [ViewController::class, 'createProduct'])->name('product.create');
     Route::get('/product/index', [ViewController::class, 'indexProduct'])->name('product.index');
     Route::get('/product/show/{id}', [ViewController::class, 'showProduct'])->name('product.show');
     Route::get('/product/edit/{id}', [ViewController::class, 'editProduct'])->name('product.edit');
+
+    // routes/web.php for Category           
+    Route::get('/category/create', [ViewController::class, 'createCategory'])->name('category.create');
+    Route::get('/category/index', [ViewController::class, 'indexCategory'])->name('category.index');
+    Route::get('/category/edit/{id}', [ViewController::class, 'editCategory'])->name('category.edit');
         
 });
 

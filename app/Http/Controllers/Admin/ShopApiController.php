@@ -9,42 +9,108 @@ use Illuminate\Http\Request;
 
 class ShopApiController extends Controller
 {
-    public function index()
+     public function index()   // API: List all shops
     {
-        return Shop::latest()->get();
+        $shops = Shop::all();
+        return response()->json(
+            [
+                'success' => true,
+                'shops' => $shops
+            ]
+        );
     }
 
-    public function store(Request $request)
+
+    public function store(Request $request)  // API: Store new shop
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
+        
+          // Validate the request data
+        $request->validate([
+            'name' => 'required',
+            'address' => 'nullable',
+            'phone' => 'nullable',
+            // 'admin_id' => 'nullable',
+            
         ]);
+        
+        $shop = new Shop();
+        $shop->name = $request->name;
+        $shop->address = $request->address;
+        $shop->phone = $request->phone;
+        $shop->admin_id = $request->admin_id;
+    
+        $shop->save();
 
-        return Shop::create([
-            'name' => $request->name,
-            'admin_id' => Auth::id(), 
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'shop created successfully',
+            'category' => $shop,
         ]);
     }
 
-    public function show($id)
-    {
-        return Shop::findOrFail($id);
-    }
 
-    public function update(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
+    public function edit($id)  // API: Edit shop
+     {
+         $shop = Shop::findOrFail($id);
+         
+         return response()->json([
+            'success' => true, 
+            'shop' => $shop
         ]);
+         
+     }
 
-        $shop = Shop::findOrFail($id);
-        $shop->update($validated);
-
-        return $shop;
-    }
-
-    public function destroy($id)
+      public function update(Request $request, $id)  // API: Store new shop
     {
-        return Shop::destroy($id);
+        
+          // Validate the request data
+        $request->validate([
+            'name' => 'required',
+            'address' => 'nullable',
+            'phone' => 'nullable',
+            // 'admin_id' => 'nullable',
+            
+        ]);
+        
+       $shop = Shop::findOrFail($id);
+       
+        $shop->name = $request->name;
+        $shop->address = $request->address;
+        $shop->phone = $request->phone;
+        $shop->admin_id = $request->admin_id;
+    
+        $shop->save();
+
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'shop updated successfully',
+            'shop' => $shop,
+        ]);
     }
+
+    public function show($id)  // API: Show  shop
+     {
+         $shop = Shop::findOrFail($id);
+         return response()->json([
+             'success' => true,
+             'shop' => $shop
+         ]);
+     }
+
+
+     public function destroy($id)   // API: Delete shop
+     {
+         $shop = Shop::findOrFail($id);
+    
+         
+         $shop->delete();
+
+         return response()->json([
+             'success' => true
+         ]);
+     }
 }

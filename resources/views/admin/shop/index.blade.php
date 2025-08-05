@@ -12,5 +12,5 @@
 
 
 @section('content')
-<index-supplier-component></index-supplier-component>
+<index-shop-component></index-shop-component>
 @endsection

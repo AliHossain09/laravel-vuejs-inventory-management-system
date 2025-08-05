@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryApiController;
 use App\Http\Controllers\Admin\EmployeeApiController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductApiController;
@@ -61,8 +62,16 @@ Route::get('/products/show/{id}', [ProductApiController::class, 'show']);
 Route::delete('/products/{id}', [ProductApiController::class, 'destroy']);
 Route::get('/dropdowns/product-form', [ProductApiController::class, 'getDropdowns']);
 
+// routes/api.php for Categories
+Route::get('/categories', [CategoryApiController::class, 'index']);
+Route::post('/categories', [CategoryApiController::class, 'store']);
+Route::get('/categories/{id}', [CategoryApiController::class, 'edit']);
+Route::put('/categories/{id}', [CategoryApiController::class, 'update']);
+Route::delete('/categories/{id}', [CategoryApiController::class, 'destroy']);
 
-// routes/api.php
+
+
+// routes/api.php for Shops
 Route::get('/shops', [ShopApiController::class, 'index']);
 Route::post('/shops', [ShopApiController::class, 'store']);
 Route::get('/shops/{id}', [ShopApiController::class, 'show']);

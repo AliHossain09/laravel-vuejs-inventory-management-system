@@ -7,9 +7,10 @@
 
 
 @section('sidebar')
+hello
 <back-sidebar-component></back-sidebar-component>
 @endsection
 
 @section('content')
-<edit-shop-component :id="{{ $id }}"></edit-shop-component>
+<edit-order-component :id="{{ $id }}"></edit-order-component>
 @endsection

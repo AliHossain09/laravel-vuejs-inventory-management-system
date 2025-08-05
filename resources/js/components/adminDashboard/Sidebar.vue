@@ -21,377 +21,382 @@
               </a>
             </li>
 
-            <!-- .......................... -->
+            
             <!-- Employ Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleEmployMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M5 13l4 4L19 7" />
-      </svg>
-      <span>Employee</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleEmployMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Employee</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isEmployMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/employee/create" class="block w-full">Add Employee</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/employee/index" class="block w-full">All Employees</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isEmployMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/employee/create" class="block w-full">Add Employee</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/employee/index" class="block w-full">All Employees</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
 
-<!-- Supplier Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleSupplierMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Supplier</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Supplier Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleSupplierMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Supplier</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isSupplierMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/supplier/create" class="block w-full">Add Supplier</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/supplier/index" class="block w-full">All Suppliers</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isSupplierMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/supplier/create" class="block w-full">Add Supplier</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/supplier/index" class="block w-full">All Suppliers</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Customer Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleCustomerMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Customer</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Customer Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleCustomerMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Customer</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isCustomerMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Customer</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Customers</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isCustomerMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/customer/create" class="block w-full">Add Customer</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/customer/index" class="block w-full">All Customers</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Products Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleProductsMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Products</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Products Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleProductsMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Products</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isProductsMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/product/create" class="block w-full">Add Product</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/product/index" class="block w-full">All Products</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isProductsMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/product/create" class="block w-full">Add Product</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/product/index" class="block w-full">All Products</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Orders Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleOrdersMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Orders</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Orders Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleOrdersMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Orders</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isOrdersMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Orders</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Orders</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isOrdersMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/order/create" class="block w-full">Add Orders</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/order/index" class="block w-full">All Orders</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Salary Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleSalaryMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Salary</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Salary Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleSalaryMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Salary</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isSalaryMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Salary</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Salary</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isSalaryMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/salary/create" class="block w-full">Add Salary</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/salary/index" class="block w-full">All Salary</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Expense Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleExpenseMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Expense</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Expense Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleExpenseMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Expense</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isExpenseMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Expense</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Expense</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isExpenseMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/expense/create" class="block w-full">Add Expense</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/expense/index" class="block w-full">All Expense</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Stock Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleStockMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Stock</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Stock Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleStockMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Stock</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isStockMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Stock</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Stock</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isStockMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/stock/create" class="block w-full">Add Stock</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/stock/index" class="block w-full">All Stock</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Reports Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleReportsMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Reports</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Reports Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleReportsMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Reports</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isReportsMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a dashboard-url= "'{{ route('employee.create') }}'" class="block w-full">Add Reports</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="admin/supplier/index" class="block w-full">All Reports</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isReportsMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/report/create" class="block w-full">Add Reports</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="admin/report/index" class="block w-full">All Reports</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
-<!-- Shops Dropdown -->
-<li class="relative px-6 py-3">
-  <button
-    class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-    @click="toggleShopsMenu"
-  >
-    <span class="inline-flex items-center">
-      <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <span>Shops</span>
-    </span>
-    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fill-rule="evenodd"
-        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-        clip-rule="evenodd"
-      />
-    </svg>
-  </button>
+            <!-- Shops Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleShopsMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Shops</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
 
-  <transition name="fade">
-    <ul
-      v-if="isShopsMenuOpen"
-      class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
-      aria-label="submenu"
-    >
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/shops/create" class="block w-full">Add Shops</a>
-      </li>
-      <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
-        <a href="/admin/shops/index" class="block w-full">All Shops</a>
-      </li>
-    </ul>
-  </transition>
-</li>
+              <transition name="fade">
+                <ul
+                  v-if="isShopsMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/shops/create" class="block w-full">Add Shops</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/shops/index" class="block w-full">All Shops</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
+
+            <!-- Categories Dropdown -->
+            <li class="relative px-6 py-3">
+              <button
+                class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                @click="toggleCategoriesMenu">
+                <span class="inline-flex items-center">
+                  <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <span>Categories</span>
+                </span>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"/>
+                </svg>
+              </button>
+
+              <transition name="fade">
+                <ul
+                  v-if="isCategoriesMenuOpen"
+                  class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-blue-950"
+                  aria-label="submenu">
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/category/create" class="block w-full">Add Categories</a>
+                  </li>
+                  <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
+                    <a href="/admin/category/index" class="block w-full">All Categories</a>
+                  </li>
+                </ul>
+              </transition>
+            </li>
 
             <!-- ............................... -->
             
@@ -455,13 +460,11 @@
             <li class="relative px-6 py-3">
             <button
               class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              @click="togglePagesMenu"
-            >
+              @click="togglePagesMenu">
               <span class="inline-flex items-center">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path
-                    d="M4 5h16M4 13h6v6H4v-6zm12 0h4v6h-4v-6zM4 9h16v2H4V9z"
-                  />
+                    d="M4 5h16M4 13h6v6H4v-6zm12 0h4v6h-4v-6zM4 9h16v2H4V9z"/>
                 </svg>
                 <span class="ml-4">Pages</span>
               </span>
@@ -469,8 +472,7 @@
                 <path
                   fill-rule="evenodd"
                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 011.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
+                  clip-rule="evenodd"/>
               </svg>
             </button>
 
@@ -479,8 +481,7 @@
               <ul
                 v-if="isPagesMenuOpen"
                 class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium text-gray-500 rounded-md shadow-inner bg-gray-50 dark:text-gray-400 dark:bg-gray-900"
-                aria-label="submenu"
-              >
+                aria-label="submenu">
                 <li class="px-2 py-1 hover:text-gray-800 dark:hover:text-gray-200">
                   <a href="pages/login.html" class="w-full block">Login</a>
                 </li>
@@ -532,6 +533,8 @@ export default {
       isStockMenuOpen: false,    // 👈 new
       isReportsMenuOpen: false,    // 👈 new
       isShopsMenuOpen: false,    // 👈 new
+      isCategoriesMenuOpen: false,    // 👈 new
+
 
     };
   },
@@ -573,6 +576,9 @@ export default {
     },
     toggleShopsMenu() {
       this.isShopsMenuOpen = !this.isShopsMenuOpen;
+    },
+    toggleCategoriesMenu() {
+      this.isCategoriesMenuOpen = !this.isCategoriesMenuOpen;
     }
     
   }

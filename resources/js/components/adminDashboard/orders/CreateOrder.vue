@@ -3,49 +3,31 @@
     <div class="flex items-center justify-between mb-4 border-b-2 shadow-md p-2 rounded-md">
         
       <h2 class="text-xl font-semibold text-gray-700 flex items-center">
-        <i class="fas fa-user mr-2"></i> Shop Insert
+        <i class="fas fa-user mr-2"></i> Category Insert
       </h2>
-      <a href="/admin/shops/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
-        All Shop
+      <a href="/admin/category/index" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+        All Category
       </a>
     </div>
 
     <!-- Form -->
-    <form form @submit.prevent="saveShop">
+    <form form @submit.prevent="saveCategory">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Full Name -->
         <div>
-          <input v-model="form.name" name="name" type="text" placeholder="Shop Name"
+          <input v-model="form.name" name="name" type="text" placeholder="Category Name"
             class="w-full border border-gray-300 p-2 rounded" />
           <span class="text-red-500 text-sm" v-if="errors.name">{{ errors.name[0] }}</span>
         </div>
 
-        
-
-        <!-- Address -->
+        <!-- Description -->
         <div>
-          <input v-model="form.address" name="address" type="text" placeholder="Address"
+          <input v-model="form.description" name="description" type="text" placeholder="Description "
             class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.address">{{ errors.address[0] }}</span>
+          <span class="text-red-500 text-sm" v-if="errors.description">{{ errors.description[0] }}</span>
         </div>
 
-        <!-- phone -->
-        <div>
-          <input v-model="form.phone" name="phone" type="number" placeholder="phone number"
-            class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.phone">{{ errors.phone[0] }}</span>
-        </div>
-
-       <!-- Admin Id -->
-        <div>
-          <input v-model="form.admin_id" name="admin_id" type="text" placeholder="User_role"
-            class="w-full border border-gray-300 p-2 rounded" />
-          <span class="text-red-500 text-sm" v-if="errors.admin_id">{{ errors.admin_id[0] }}</span>
-        </div>
-
-        
-
-      </div>
+       </div>
 
       <!-- Submit Button -->
       <div class="mt-6">
@@ -66,31 +48,42 @@ export default {
     return {
       form: {
        name: '',
-        address: '',
-        phone: '',
-        admin_id: '',
+        description: '',
         
       },
        errors: {}, // Validation error messages
 
+       
     };
   },
   methods: {
-    saveShop() {
-      axios.post('/api/shops', {
-        
-         name: this.form.name,
-        address: this.form.address,
-        phone: this.form.phone,
-        admin_id: this.form.admin_id
+    
+    
 
+    saveCategory() {
+      const formData = new FormData();
+      formData.append('name', this.form.name);
+      formData.append('email', this.form.email);
+      formData.append('address', this.form.address);
+      formData.append('phone', this.form.phone);
+      
+     
+      // formData.append('image', this.form.image);
+      if (this.form.image) {
+        formData.append('image', this.form.image);
+        }
+
+      axios.post('/api/categories', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
       }).then(response => {
   const data = response.data;
   if (data.success) {
     Swal.fire({
       icon: 'success',
-      title: 'আপনার shops সফলভাবে তৈরি হয়েছে।',
-      text: 'shops সফলভাবে যুক্ত হয়েছে!',
+      title: 'আপনার একাউন্ট সফলভাবে তৈরি হয়েছে।',
+      text: 'supplier সফলভাবে যুক্ত হয়েছে!',
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
@@ -107,7 +100,7 @@ export default {
 
     // redirect after 3 secounds later
     setTimeout(() => {
-      window.location.href = '/admin/shop/index';
+      window.location.href = '/admin/categories/index';
     }, 3000);
   }
 }).catch(error => {
